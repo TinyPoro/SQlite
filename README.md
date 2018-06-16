@@ -1,19 +1,21 @@
-# SQlite
 1 vài bất lợi
 
-As we mentioned SQLite is single thread. So it means SQLite can do one write operation at the same time. 
-As we mentioned SQLite keep data [base] in one file. So it means whole database locks during write operation. This very unwanted for huge and intensive access database. 
-No application level authentication required.
-Make Multi thread write almost same time.
-Như chúng tôi đã nói thì SQLite hoạt động đơn luồng. Có nghĩa là SQlite chỉ thực hiện 1 hoạt động tại 1 thời điểm nhất định. Chúng tôi cũng đã nói SQLite giữ dữ liệu gốc trong 1 file. Có nghĩa là toàn bộ cơ sở dữ liệu sẽ được khóa trong quá trình ghi. Đây thực sự là điều không mong muốn với các truy cập cơ sở dữ liệu lớn và 
+Như chúng tôi đã nói thì SQLite hoạt động đơn luồng. Có nghĩa là SQlite chỉ thực hiện 1 hoạt động tại 1 thời điểm nhất định. Chúng tôi cũng đã nói SQLite giữ dữ liệu gốc trong 1 file. Có nghĩa là toàn bộ cơ sở dữ liệu sẽ được khóa trong quá trình ghi. Đây thực sự là điều không mong muốn với các truy cập cơ sở dữ liệu lớn.
+
+Không yêu cầu các mức độ xác thực ứng dụng nào.
+
+Thực hiện việc ghi đa luồng hầu như cùng lúc.
 
 Now I will try to show small trick to make write operation in almost same time.
+Bây giờ tôi sẽ cố gắng đưa ra 1 vài thủ thuật nhỏ để thực hiện việc ghi cùng lúc.
 
-note: SQLite never allow you to achieve ROW LEVEL LOCK. So no need to waste time for search about it.
+Lưu ý: SQLite không bao giờ cho phép bạn có thể ROW LEVEL LOCK. Vì vậy không cần phí thời gian tìm hiểu về nó .
+
 
 
 
 Of course it can impact performance if you do write operation on big part of table. But second thread will not wait a lot of time for first operation end. 
+Tất nhiên nó có thể ảnh hưởng đến hiệu suất nếu bạn thực hiện lệnh viết trên phần lớn dữ liệu trong bảng/ Nhưng luồng thứ 2 sẽ không đợi lâu cho đến khi luồng thứ nhất kết thúc.
 
 here is main point STEP 1.7.
 
