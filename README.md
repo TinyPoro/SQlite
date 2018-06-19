@@ -7,14 +7,14 @@ Trước tiên hay tìm hiểu về các lợi thế và bất lợi của SQLit
 
 ## Các lợi thế.
 - SQLite is written pure C programming language. So it is fastest access to DISK or Memory database and process data. Think about if you use SSD disk. 
-- SQLite được viết bằng ngôn ngữ lập trình C thuần. Vì thế nó có tốc độ truy cập 
-- SQLite support in-memory. In memory SQLite almost 2 time fast. If you understand paging issue. It is enough fast.
-- SQLite is single thread. So it lowest risk to corrupt data. 
-- SQLite database in single file. So we can move database and access by another platform very easyly. 
-- SQLite is 0 administration for end user. 
-- Cross platform. SQLite can be used on all major OS platform. 
+- SQLite được viết bằng ngôn ngữ lập trình C thuần. Vì thế nó có tốc độ truy cập
+- SQLite hỗ trợ bộ nhớ trong. Tốc độ SQLite gần như nhanh gấp 2 lần khi hoạt động trong bộ nhớ. Nếu bạn biết về các vấn đề phân trang. Nó thực sự đủ nhanh.
+- SQLite là đơn luồng. Do vậy nó ít rủi ro mất mát dữ liệu.
+- Cơ sở dữ liệu SQLite là file đơn. Vì vậy bạn có thể chuyển csdl và truy caajpj bằng nền tảng khác dễ dàng.
+- SQLite không quản trị cho end user.
+- Đa nền tảng. SQLite có thể được sử dụng bởi hầu hết nền tảng OS,
 - OPENSOURCE OPENSOURCE OPENSOURCE !!!
-- And so on ………..
+- Và hơn thế nữa ………..
 
 ## 1 vài bất lợi
 
