@@ -3,28 +3,27 @@ Chào các bạn của tui,
 
 Như các bạn đã biết thì SQLite là cơ sở dữ liệu đơn luồng mặc định được nhúng vào Linux OS. Có rất nhiều nghiên cứu về việc lưu trữ dữ liệu sử dụng SQLite. Cũng có nhiều nghiên cứu về cách truy cập cơ sở dữ liệu SQLite cho các quá trình ghi đa luồng. Tôi sẽ chia sẻ nghiên cứu nhỏ của tôi về cách thực hiện hoạt động ghi đa luồng trên SQLite DB.
 
-Trước tiên hay tìm hiểu về các lợi thế và bất lợi của SQLite.
+Trước tiên hay tìm hiểu về các ưu nhược điểm của SQLite.
 
 ## Các lợi thế.
-- SQLite is written pure C programming language. So it is fastest access to DISK or Memory database and process data. Think about if you use SSD disk. 
-- SQLite được viết bằng ngôn ngữ lập trình C thuần. Vì thế nó có tốc độ truy cập
+- SQLite được viết bằng ngôn ngữ lập trình C thuần. Vì vậy, việc truy cập vào ổ đĩa hoặc bộ nhớ cơ sở dữ liệu và xử lý dữ liệu là nhanh nhất. Bạn có thể liên tưởng điều này giống như việc sử dụng ổ SSD vậy.
 - SQLite hỗ trợ bộ nhớ trong. Tốc độ SQLite gần như nhanh gấp 2 lần khi hoạt động trong bộ nhớ. Nếu bạn biết về các vấn đề phân trang. Nó thực sự đủ nhanh.
 - SQLite là đơn luồng. Do vậy nó ít rủi ro mất mát dữ liệu.
-- Cơ sở dữ liệu SQLite là file đơn. Vì vậy bạn có thể chuyển csdl và truy caajpj bằng nền tảng khác dễ dàng.
+- Cơ sở dữ liệu SQLite là file đơn. Vì vậy bạn có thể di chuyển csdl và truy cập bằng nền tảng khác dễ dàng.
 - SQLite không quản trị cho end user.
-- Đa nền tảng. SQLite có thể được sử dụng bởi hầu hết nền tảng OS,
+- Đa nền tảng. SQLite có thể được sử dụng bởi hầu hết nền tảng hệ điều hành.
 - OPENSOURCE OPENSOURCE OPENSOURCE !!!
 - Và hơn thế nữa ………..
 
 ## 1 vài bất lợi
 
-- Như chúng tôi đã nói thì SQLite hoạt động đơn luồng. Có nghĩa là SQlite chỉ thực hiện 1 hoạt động tại 1 thời điểm nhất định.
+- Như chúng tôi đã nói thì SQLite hoạt động đơn luồng. Có nghĩa là SQlite chỉ thực hiện 1 hoạt động ghi tại 1 thời điểm nhất định.
 - Chúng tôi cũng đã nói SQLite giữ dữ liệu gốc trong 1 file. Có nghĩa là toàn bộ cơ sở dữ liệu sẽ được khóa trong quá trình ghi. Đây thực sự là điều không mong muốn với các truy cập cơ sở dữ liệu lớn.
 - Không yêu cầu các mức độ xác thực ứng dụng nào.
 
 ## Thực hiện việc ghi đa luồng hầu như cùng lúc.
 
-Bây giờ tôi sẽ cố gắng đưa ra 1 vài thủ thuật nhỏ để thực hiện việc ghi cùng lúc.
+Bây giờ tôi sẽ cố gắng đưa ra 1 vài thủ thuật nhỏ để thực hiện việc ghi gần như cùng lúc.
 
 ## Lưu ý: SQLite không bao giờ cho phép bạn có thể ROW LEVEL LOCK. Vì vậy không cần phí thời gian tìm hiểu về nó .
 
